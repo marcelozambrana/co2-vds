@@ -8,15 +8,30 @@ class App extends Component {
     this.handleLimpar = this.handleLimpar.bind(this)
   }
   handleCalcular() {
-    this.refs.lencos.value = this.refs.lencos.value ? this.refs.lencos.value : 0
-    this.refs.tops.value = this.refs.tops.value ? this.refs.tops.value : 0
-    this.refs.bottoms.value = this.refs.bottoms.value ? this.refs.bottoms.value : 0
+    const lencol_grPc = 60
+    const top_grPc = 100
+    const bottom_grPc = 300
 
-    const x = (parseInt(this.refs.lencos.value, 10) * 7) + (parseInt(this.refs.tops.value, 10) * 12) + (parseInt(this.refs.bottoms.value, 10) * 35.72)
-    this.refs.resultado1.value = Math.round(x)
+    this.refs.lencos.value = parseInt(this.refs.lencos.value ? this.refs.lencos.value : 0, 10)
+    this.refs.tops.value = parseInt(this.refs.tops.value ? this.refs.tops.value : 0, 10)
+    this.refs.bottoms.value = parseInt(this.refs.bottoms.value ? this.refs.bottoms.value : 0, 10)
 
-    const y = (parseInt(this.refs.lencos.value, 10) * 139) + (parseInt(this.refs.tops.value, 10) * 231) + (parseInt(this.refs.bottoms.value, 10) * 694)
-    this.refs.resultado2.value = Math.round(y)
+    const co2_sequestrada = 0.735
+    const pegada_co2 = 0.0254
+
+    const calculoAmoreiras = ((this.refs.lencos.value * lencol_grPc) +
+      (this.refs.tops.value * top_grPc) +
+      (this.refs.bottoms.value * bottom_grPc))
+
+    const calculoCo2 = ((this.refs.lencos.value * lencol_grPc * co2_sequestrada) 
+                          - (this.refs.lencos.value * lencol_grPc * pegada_co2)) +
+                      ((this.refs.tops.value * top_grPc * co2_sequestrada) 
+                          - (this.refs.tops.value * top_grPc * pegada_co2)) +
+                      ((this.refs.bottoms.value * bottom_grPc * co2_sequestrada) 
+                          - (this.refs.bottoms.value * bottom_grPc * pegada_co2))
+    
+    this.refs.resultado1.value = Math.round(calculoAmoreiras / 8.4).toLocaleString('pt')
+    this.refs.resultado2.value = Math.round((calculoCo2 / 112) * 365).toLocaleString('pt')
   }
   handleLimpar() {
     this.refs.lencos.value = ''
@@ -29,76 +44,75 @@ class App extends Component {
     return (
       <div className="App">
         <div className="container">
-          <div className="header clearfix">
-            <h3 className="text-muted" style={{color: 'green'}}>Vale da Seda</h3>
+          <div className="header clearfix" style={{display:'flex', justifyContent: 'flex-end'}}>
+            <img src={"/valedaseda.jpg"} style={{width: '50px', height: '50px' }} />
           </div>
-          <div className="jumbotron" style={{ paddingTop: "0px" }}>
+          <div className="jumbotron" style={{ paddingTop: '0px', paddingBottom: '15px', marginBottom: '5px' }}>
             <div className="row">
-              <div className="col-sm text-justify" style={{padding: "10px"}}>
-                <h2>Informe quantas peças de seda você tem no seu guarda-roupas</h2>
+              <div className="col-sm text-justify" style={{ padding: '7px', fontSize: '20px' }}>
+                <span><strong>Informe quantas peças de seda você tem no seu guarda-roupas</strong></span>
               </div>
             </div>
 
-            <div className="row">
-              <div className="col-sm-2">
-                <span><strong>Lenços (unidades)</strong></span>
+            <div className="row" style={{ padding: '5px'}}>
+              <div className="col-sm-1" style={{ padding: '5px'}}>
+                <span><strong>Lenços</strong></span>
               </div>
-              <div className="col-sm-3">
+              <div className="col-sm-7">
                 <input className='form-control' type="number" placeholder='Qtde de Lenços' ref='lencos' />
               </div>
             </div>
-            <div className="row">
-              <div className="col-sm-2">
-                <span><strong>Tops (unidades)</strong></span>
+            <div className="row"  style={{ padding: '5px'}}>
+              <div className="col-sm-1" style={{ padding: '5px'}}>
+                <span><strong>Tops</strong></span>
               </div>
-              <div className="col-sm-3">
+              <div className="col-sm-7">
                 <input className='form-control' type="number" placeholder='Qtde de Tops (blusa, túnica, etc)' ref='tops' />
               </div>
             </div>
-            <div className="row">
-              <div className="col-sm-2">
-                <span><strong>Bottoms (unidades)</strong></span>
+            <div className="row"  style={{ padding: '5px'}}>
+              <div className="col-sm-1" style={{ padding: '5px'}}>
+                <span><strong>Bottoms</strong></span>
               </div>
-              <div className="col-sm-3">
+              <div className="col-sm-7">
                 <input className='form-control' type="number" placeholder='Qtde de Bottoms (saia, calça, etc)' ref='bottoms' />
               </div>
             </div>
-            <div className="row">
-              <div className="col-sm-12">
-                <button className="btn btn-info" style={{ marginTop: "10px", marginRight: "10px" }} onClick={this.handleCalcular}>Calcular</button>
-                <button className="btn btn-info" style={{ marginTop: "10px", marginRight: "10px" }} onClick={this.handleLimpar}>Limpar</button>
-              </div>
+          </div>
+
+          <div className="row">
+            <div className="col-sm-12 text-justify" style={{ color: 'green', fontSize: '16px' }}>
+              <strong>Veja aqui quantas amoreiras foram necessárias para produzir a seda em seu guarda-roupas *</strong>
+            </div>
+            <div className="col-sm-12 text-justify" style={{ display: 'flex' }}>
+              <input className='form-control' type="text" ref='resultado1' style={{ width: '95px', margin: '10px', textAlign: 'center' }} disabled='true' />
+              <span style={{ padding: '12px' }}><strong>amoreiras cultivadas sem agrotóxico</strong></span>
             </div>
           </div>
 
           <div className="row">
-            <div className="col-sm-12 text-justify" style={{color: 'green'}}>
-              <h3>Veja aqui quantas amoreiras foram necessárias para produzir a seda em seu guarda-roupas *</h3>
+            <div className="col-sm-12 text-justify" style={{ color: 'green', fontSize: '16px' }}>
+              <strong>Veja aqui quantos dias de uso de seu celular foram neutralizados por estas amoreiras **</strong>
             </div>
-            <div className="col-sm-6">
-              <input className='form-control' type="text" ref='resultado1' />
-            </div>
-            <div className="col-sm-5 text-justify">
-              <h4><strong>amoreiras cultivadas sem agrotóxico</strong></h4>
+            <div className="col-sm-12 text-justify" style={{ display: 'flex' }}>
+              <input className='form-control' type="text" ref='resultado2' style={{ width: '95px', margin: '10px', textAlign: 'center' }} disabled='true' />
+              <span style={{ padding: '15px' }}><strong>dias</strong></span>
             </div>
           </div>
 
           <div className="row">
-            <div className="col-sm-12 text-justify" style={{color: 'green'}}>
-              <h3>Veja aqui quantos dias de uso de seu celular foram neutralizados por estas amoreiras **</h3>
-            </div>
-            <div className="col-sm-2">
-              <input className='form-control' type="text" ref='resultado2' />
-            </div>
-            <div className="col-sm-5">
-              <h4><strong>dias</strong></h4>
+            <div className="col-sm-12">
+              <button className="btn btn-info" style={{ marginTop: "10px", marginRight: "10px" }} onClick={this.handleCalcular}>Calcular</button>
+              <button className="btn btn-info" style={{ marginTop: "10px", marginRight: "10px" }} onClick={this.handleLimpar}>Limpar</button>
             </div>
           </div>
 
-          <div className="row" style={{marginTop: "60px"}}>
+          <div className="row" style={{ marginTop: "40px" }}>
             <div className="col-sm-12 text-justify">
-              <p><i>(*) Silk Industry and Carbon Mitigation - AUTEX 2017</i></p>
-              <p><i>(**) Kick the Habit - A UN Guide to Climate Neutrality</i></p>
+              <p><i><a href='http://iopscience.iop.org/article/10.1088/1757-899X/254/19/192008/meta;jsessionid=1CD3EFC723BA0472CCF5BFC47BF1C345.c2.iopscience.cld.iop.org'>
+                (*) Silk Industry and Carbon Mitigation - AUTEX 2017</a></i></p>
+              <p><i><a href='http://www.unesco.org/education/tlsf/mods/theme_c/img/grid/kick_full_lr.pdf'>
+                (**) Kick the Habit - A UN Guide to Climate Neutrality</a></i></p>
             </div>
           </div>
         </div>
