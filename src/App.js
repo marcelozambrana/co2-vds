@@ -50,60 +50,60 @@ class App extends Component {
           <div className="jumbotron" style={{ paddingTop: '0px', paddingBottom: '15px', marginBottom: '5px' }}>
             <div className="row">
               <div className="col-sm text-justify" style={{ padding: '7px', fontSize: '20px' }}>
-                <span><strong>Informe quantas peças de seda você tem no seu guarda-roupas</strong></span>
+                <span><strong>How many pieces of silk do you have in your wardrobe?</strong></span>
               </div>
             </div>
 
             <div className="row" style={{ padding: '5px' }}>
               <div className="col-sm-12" style={{ padding: '5px' }}>
-                <span><strong>Lenços</strong></span>
+                <span><strong>Scarves</strong></span>
               </div>
               <div className="col-sm-12">
-                <input className='form-control' type="number" placeholder='Qtde de Lenços' style={{ fontSize: '16px' }} ref='lencos' />
+                <input className='form-control' type="number" placeholder='Qty of scarves' style={{ fontSize: '16px' }} ref='lencos' />
               </div>
             </div>
             <div className="row" style={{ padding: '5px' }}>
               <div className="col-sm-12" style={{ padding: '5px' }}>
-                <span><strong>Tops (blusa, túnica, etc)</strong></span>
+                <span><strong>Tops (blouses, shirts etc)</strong></span>
               </div>
               <div className="col-sm-12">
-                <input className='form-control' type="number" placeholder='Qtde de Tops (blusa, túnica, etc)' style={{ fontSize: '16px' }} ref='tops' />
+                <input className='form-control' type="number" placeholder='Qty of Tops (blouses, shirts etc)' style={{ fontSize: '16px' }} ref='tops' />
               </div>
             </div>
             <div className="row" style={{ padding: '5px' }}>
               <div className="col-sm-12" style={{ padding: '5px' }}>
-                <span><strong>Bottoms (saia, calça, etc)</strong></span>
+                <span><strong>Bottoms (skirts, trousers etc)</strong></span>
               </div>
               <div className="col-sm-12">
-                <input className='form-control' type="number" placeholder='Qtde de Bottoms (saia, calça, etc)' style={{ fontSize: '16px' }} ref='bottoms' />
+                <input className='form-control' type="number" placeholder='Qty of Bottoms (skirts, trousers etc)' style={{ fontSize: '16px' }} ref='bottoms' />
               </div>
             </div>
           </div>
 
           <div className="row">
             <div className="col-sm-12 text-justify" style={{ color: 'green', fontSize: '16px' }}>
-              <strong>Veja aqui quantas amoreiras foram mantidas vivas para produzir a seda em seu guarda-roupas *</strong>
+              <strong>Check here how many mulberry trees were kept alive to produce the silk in your wardrobe *</strong>
             </div>
             <div className="col-sm-12 text-justify" style={{ display: 'flex' }}>
               <input className='form-control' type="text" ref='resultado1' style={{ width: '95px', margin: '10px', textAlign: 'center', fontSize: '16px' }} disabled='true' />
-              <span style={{ padding: '12px' }}><strong>amoreiras cultivadas sem agrotóxico</strong></span>
+              <span style={{ padding: '12px' }}><strong>mulberry trees pesticide free</strong></span>
             </div>
           </div>
 
           <div className="row">
             <div className="col-sm-12 text-justify" style={{ color: 'green', fontSize: '16px' }}>
-              <strong>Veja aqui quantos dias de uso de seu celular foram neutralizados por estas amoreiras **</strong>
+              <strong>Check here how many days of use of your cell phone have been neutralized by these mulberry trees **</strong>
             </div>
             <div className="col-sm-12 text-justify" style={{ display: 'flex' }}>
               <input className='form-control' type="text" ref='resultado2' style={{ width: '95px', margin: '10px', textAlign: 'center', fontSize: '16px' }} disabled='true' />
-              <span style={{ padding: '15px' }}><strong>dias</strong></span>
+              <span style={{ padding: '15px' }}><strong>days</strong></span>
             </div>
           </div>
 
           <div className="row">
             <div className="col-sm-12">
-              <button className="btn btn-info" style={{ marginTop: "10px", marginRight: "10px" }} onClick={this.handleCalcular}>Calcular</button>
-              <button className="btn btn-info" style={{ marginTop: "10px", marginRight: "10px" }} onClick={this.handleLimpar}>Limpar</button>
+              <button className="btn btn-info" style={{ marginTop: "10px", marginRight: "10px" }} onClick={this.handleCalcular}>Enter</button>
+              <button className="btn btn-info" style={{ marginTop: "10px", marginRight: "10px" }} onClick={this.handleLimpar}>Clear</button>
             </div>
           </div>
 
@@ -119,7 +119,7 @@ class App extends Component {
           <div className="row" style={{ marginTop: "35px", fontSize: '11px', textDecoration: 'none' }}>
             <div className="col-sm-12 text-justify">
               <p><bold><a href='http://eurekalabs.com.br/' target="eurekalabs">
-                Desenvolvido por Eurekalabs</a></bold></p>
+                Developed by Eurekalabs</a></bold></p>
             </div>
           </div>
         </div>
