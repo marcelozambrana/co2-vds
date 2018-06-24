@@ -23,13 +23,13 @@ class App extends Component {
       (this.refs.tops.value * top_grPc) +
       (this.refs.bottoms.value * bottom_grPc))
 
-    const calculoCo2 = ((this.refs.lencos.value * lencol_grPc * co2_sequestrada) 
-                          - (this.refs.lencos.value * lencol_grPc * pegada_co2)) +
-                      ((this.refs.tops.value * top_grPc * co2_sequestrada) 
-                          - (this.refs.tops.value * top_grPc * pegada_co2)) +
-                      ((this.refs.bottoms.value * bottom_grPc * co2_sequestrada) 
-                          - (this.refs.bottoms.value * bottom_grPc * pegada_co2))
-    
+    const calculoCo2 = ((this.refs.lencos.value * lencol_grPc * co2_sequestrada)
+      - (this.refs.lencos.value * lencol_grPc * pegada_co2)) +
+      ((this.refs.tops.value * top_grPc * co2_sequestrada)
+        - (this.refs.tops.value * top_grPc * pegada_co2)) +
+      ((this.refs.bottoms.value * bottom_grPc * co2_sequestrada)
+        - (this.refs.bottoms.value * bottom_grPc * pegada_co2))
+
     this.refs.resultado1.value = Math.round(calculoAmoreiras / 8.4).toLocaleString('pt')
     this.refs.resultado2.value = Math.round((calculoCo2 / 112) * 365).toLocaleString('pt')
   }
@@ -44,8 +44,8 @@ class App extends Component {
     return (
       <div className="App">
         <div className="container">
-          <div className="header clearfix" style={{display:'flex', justifyContent: 'flex-end'}}>
-            <img src={"/valedaseda.jpg"} style={{width: '50px', height: '50px' }} />
+          <div className="header clearfix" style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <img src={"/valedaseda.jpg"} style={{ width: '50px', height: '50px' }} />
           </div>
           <div className="jumbotron" style={{ paddingTop: '0px', paddingBottom: '15px', marginBottom: '5px' }}>
             <div className="row">
@@ -54,38 +54,38 @@ class App extends Component {
               </div>
             </div>
 
-            <div className="row" style={{ padding: '5px'}}>
-              <div className="col-sm-1" style={{ padding: '5px'}}>
+            <div className="row" style={{ padding: '5px' }}>
+              <div className="col-sm-12" style={{ padding: '5px' }}>
                 <span><strong>Lenços</strong></span>
               </div>
-              <div className="col-sm-7">
-                <input className='form-control' type="number" placeholder='Qtde de Lenços' ref='lencos' />
+              <div className="col-sm-12">
+                <input className='form-control' type="number" placeholder='Qtde de Lenços' style={{ fontSize: '16px' }} ref='lencos' />
               </div>
             </div>
-            <div className="row"  style={{ padding: '5px'}}>
-              <div className="col-sm-1" style={{ padding: '5px'}}>
-                <span><strong>Tops</strong></span>
+            <div className="row" style={{ padding: '5px' }}>
+              <div className="col-sm-12" style={{ padding: '5px' }}>
+                <span><strong>Tops (blusa, túnica, etc)</strong></span>
               </div>
-              <div className="col-sm-7">
-                <input className='form-control' type="number" placeholder='Qtde de Tops (blusa, túnica, etc)' ref='tops' />
+              <div className="col-sm-12">
+                <input className='form-control' type="number" placeholder='Qtde de Tops (blusa, túnica, etc)' style={{ fontSize: '16px' }} ref='tops' />
               </div>
             </div>
-            <div className="row"  style={{ padding: '5px'}}>
-              <div className="col-sm-1" style={{ padding: '5px'}}>
-                <span><strong>Bottoms</strong></span>
+            <div className="row" style={{ padding: '5px' }}>
+              <div className="col-sm-12" style={{ padding: '5px' }}>
+                <span><strong>Bottoms (saia, calça, etc)</strong></span>
               </div>
-              <div className="col-sm-7">
-                <input className='form-control' type="number" placeholder='Qtde de Bottoms (saia, calça, etc)' ref='bottoms' />
+              <div className="col-sm-12">
+                <input className='form-control' type="number" placeholder='Qtde de Bottoms (saia, calça, etc)' style={{ fontSize: '16px' }} ref='bottoms' />
               </div>
             </div>
           </div>
 
           <div className="row">
             <div className="col-sm-12 text-justify" style={{ color: 'green', fontSize: '16px' }}>
-              <strong>Veja aqui quantas amoreiras foram necessárias para produzir a seda em seu guarda-roupas *</strong>
+              <strong>Veja aqui quantas amoreiras foram mantidas vivas para produzir a seda em seu guarda-roupas *</strong>
             </div>
             <div className="col-sm-12 text-justify" style={{ display: 'flex' }}>
-              <input className='form-control' type="text" ref='resultado1' style={{ width: '95px', margin: '10px', textAlign: 'center' }} disabled='true' />
+              <input className='form-control' type="text" ref='resultado1' style={{ width: '95px', margin: '10px', textAlign: 'center', fontSize: '16px' }} disabled='true' />
               <span style={{ padding: '12px' }}><strong>amoreiras cultivadas sem agrotóxico</strong></span>
             </div>
           </div>
@@ -95,7 +95,7 @@ class App extends Component {
               <strong>Veja aqui quantos dias de uso de seu celular foram neutralizados por estas amoreiras **</strong>
             </div>
             <div className="col-sm-12 text-justify" style={{ display: 'flex' }}>
-              <input className='form-control' type="text" ref='resultado2' style={{ width: '95px', margin: '10px', textAlign: 'center' }} disabled='true' />
+              <input className='form-control' type="text" ref='resultado2' style={{ width: '95px', margin: '10px', textAlign: 'center', fontSize: '16px' }} disabled='true' />
               <span style={{ padding: '15px' }}><strong>dias</strong></span>
             </div>
           </div>
@@ -107,12 +107,19 @@ class App extends Component {
             </div>
           </div>
 
-          <div className="row" style={{ marginTop: "40px" }}>
+          <div className="row" style={{ marginTop: "40px", textDecoration: 'none' }}>
             <div className="col-sm-12 text-justify">
-              <p><i><a href='http://iopscience.iop.org/article/10.1088/1757-899X/254/19/192008/meta;jsessionid=1CD3EFC723BA0472CCF5BFC47BF1C345.c2.iopscience.cld.iop.org'>
+              <p><i><a href='http://iopscience.iop.org/article/10.1088/1757-899X/254/19/192008/meta;jsessionid=1CD3EFC723BA0472CCF5BFC47BF1C345.c2.iopscience.cld.iop.org' target="autex">
                 (*) Silk Industry and Carbon Mitigation - AUTEX 2017</a></i></p>
-              <p><i><a href='http://www.unesco.org/education/tlsf/mods/theme_c/img/grid/kick_full_lr.pdf'>
+              <p><i><a href='http://www.unesco.org/education/tlsf/mods/theme_c/img/grid/kick_full_lr.pdf' target="guideNeutrality">
                 (**) Kick the Habit - A UN Guide to Climate Neutrality</a></i></p>
+            </div>
+          </div>
+
+          <div className="row" style={{ marginTop: "35px", fontSize: '11px', textDecoration: 'none' }}>
+            <div className="col-sm-12 text-justify">
+              <p><bold><a href='http://eurekalabs.com.br/' target="eurekalabs">
+                Desenvolvido por Eurekalabs</a></bold></p>
             </div>
           </div>
         </div>
